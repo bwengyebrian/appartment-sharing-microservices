@@ -1,0 +1,23 @@
+spring:
+  data:
+    cassandra:
+      keyspaceName: booking
+      contactPoints: localhost
+      username: cassandra
+      password: cassandra
+      port: 9042
+      schemaAction: CREATE_IF_NOT_EXISTS
+
+  mail:
+    host: smtp.gmail.com
+    username: educationalpurpose076@gmail.com
+    password: asdfgh!@#$%^
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    protocol: smtp
+    test-connection: false
