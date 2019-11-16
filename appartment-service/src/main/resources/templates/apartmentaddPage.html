@@ -1,0 +1,104 @@
+<!doctype html>
+<form lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Welcome To Apartment Booking</title>
+</head>
+
+
+
+<form>
+<div class="container-fluid">
+    <div class="row" style="text-align: center">
+        <div class="col-md-12">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand">Add New Apartment</a>
+            </nav>
+        </div>
+    </div>
+</div>
+</form>
+        <div class="col-md-9 col-md-offset-4">
+        <form action="saveapartment" method="post">
+
+            <div class="form-group row">
+                <label for="inputapartmentNumber" class="col-sm-2 col-form-label">Apartment Number</label>
+                <div class="col-sm-10">
+                    <input type="number" name="apartmentId" class="form-control" id="inputapartmentnumber" placeholder="Enter Apartment number">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputapartmentTitle" class="col-sm-2 col-form-label">Apartment Title</label>
+                <div class="col-sm-10">
+                    <input type="text" name="apartmentTitle" class="form-control" id="inputapartmenttitle" placeholder="Apartment Title">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputapartmentLocation" class="col-sm-2 col-form-label">Apartment Location</label>
+                <div class="col-sm-10">
+                    <input type="text" name="apartmentLocation" class="form-control" id="inputapartmentlocation" placeholder="Enter Location">
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="inputapartmentPhone" class="col-sm-2 col-form-label">Phone No.</label>
+                <div class="col-sm-10">
+                    <input type="text" name="apartmentPhoneNumber" class="form-control" id="inputapartmentphone" placeholder="Enter Phone">
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="inputapartmentRate" class="col-sm-2 col-form-label">Rate</label>
+                <div class="col-sm-10">
+                    <input type="number" step=".01" name="apartmentCost" class="form-control" id="inputapartmentrate" placeholder="Enter rate in $">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputapartmentImage" class="col-sm-2 col-form-label">Image</label>
+                <div class="col-sm-10">
+                    <input type="text" name="apartmentImage" class="form-control" id="inputapartmentimage" placeholder="I will do later">
+                </div>
+            </div>
+
+    <!-- correct -->
+    <div class="col-md-9 text-center">
+
+
+        <button id="savebutton" name="saveebutton" class="btn btn-primary">Save</button>
+        <br />
+        <br />
+
+        <div id="browse_app">
+            <a class="btn btn-large btn-info" href="/displayApartments">View Apartments</a>
+        </div>
+
+    </div>
+        </form>
+          <!--  <p th:if="${message}" th:text="${message}"></p>  -->
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+</body>
+</form>
+</html>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
