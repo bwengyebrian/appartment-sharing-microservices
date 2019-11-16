@@ -1,8 +1,13 @@
 import React , {Component} from 'react'
+import { BrowserRouter as Router , Link , NavLink , Prompt } from 'react-router-dom'
+import Route from 'react-router-dom/Route';
+import AddAppartment from './AddAppartment'
 class Header extends Component{
     render(){
         return(
-        <header id="header-container">
+        <React.Fragment>   
+       
+        <header id="header-container"  class="fixed fullwidth dashboard">
 
             { /*  <!-- Header   -- > */ }
             <div id="header">
@@ -56,7 +61,7 @@ class Header extends Component{
                         <div class="header-widget">
                             { /*  <!-- User Menu   -- > */ }
                             <div class="user-menu">
-                                <div class="user-name"><span><img src="images/dashboard-avatar.jpg" alt=""></span>Hi, Tom!</div>
+                                <div class="user-name"><span><img src="images/dashboard-avatar.jpg" alt=""/></span>Hi, Tom!</div>
                                 <ul>
                                     <li><a href="dashboard.html"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
                                     <li><a href="dashboard-messages.html"><i class="sl sl-icon-envelope-open"></i> Messages</a></li>
@@ -65,8 +70,8 @@ class Header extends Component{
                                 </ul>
                             </div>
         
-        
-                            <a href="dashboard-add-listing.html" class="button border with-icon">Add Listing <i class="sl sl-icon-plus"></i></a>
+                            <a href="#sign-in-dialog" class="sign-in popup-with-zoom-anim"><i class="sl sl-icon-login"></i> Sign In</a>
+                            <NavLink to="/addlist" className="button border with-icon">Add Appartment </NavLink>
                         </div>
                     </div>
                     { /*  <!-- Right Side Content / End   -- > */ }
@@ -89,7 +94,7 @@ class Header extends Component{
                             <div class="tabs-container alt">
         
                                 { /*  <!-- Login   -- > */ }
-                                <div class="tab-content" id="tab1" style="display: none;">
+                                <div class="tab-content" id="tab1" style={{display:"none"}}>
                                     <form method="post" class="login">
         
                                         <p class="form-row form-row-wide">
@@ -121,7 +126,7 @@ class Header extends Component{
                                 </div>
         
                                 { /*  <!-- Register   -- > */ }
-                                <div class="tab-content" id="tab2" style="display: none;">
+                                <div class="tab-content" id="tab2" style={{display:"none"}}>
         
                                     <form method="post" class="register">
                                         
@@ -165,10 +170,14 @@ class Header extends Component{
         
                 </div>
             </div>
-            </div>
+        
             { /*  <!-- Header / End   -- > */ }
         
         </header>  
+        {this.props.children}
+
+      
+        </React.Fragment> 
         )
     }
 }
