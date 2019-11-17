@@ -63,12 +63,12 @@
                                     <td th:text="'$'+${apartments.apartmentCost}"></td>
                                     <td th:text="${apartments.apartmentImage}"></td>
                                  <td><a th:href="@{'/editPages/{apartmentId}'(apartmentId=${apartments.apartmentId})}">Edit</a></td>
-                                    <td><a th:href="@{'/deleteapartments/' + ${apartments.apartmentId}}">Delete</a>
+                                 <td><a th:href="@{'/deleteapartments/{apartmentId}'(apartmentId=${apartments.apartmentId})}">Delete</a>
                                     </td>
 
                                 </tr>
                                 </tbody>
-                                <a href="addApartment" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add New Apartment</a>
+                                <a href="addApartment" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add New Apartment Test</a>
                                 <br />
                                 <br />
             </table>
