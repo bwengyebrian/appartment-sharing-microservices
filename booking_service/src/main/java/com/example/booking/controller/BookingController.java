@@ -42,7 +42,7 @@ public class BookingController {
 	private BookingService bookingService;
 
 	@PostMapping("/addbooking")
-	public Bookings add(@RequestBody Bookings booking, HttpServletRequest request) {
+	public String add(@RequestBody Bookings booking, HttpServletRequest request) {
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Authorization", request.getHeader("Authorization"));
@@ -54,7 +54,7 @@ public class BookingController {
 		
 		int total=100;
 		
-		ResponseEntity<String> paymentResponse = restTemplate.exchange("http://localhost:8099/makepayment/"+total, HttpMethod.GET,
+		ResponseEntity<String> paymentResponse = restTemplate.exchange("http://localhost:8099/makepayment", HttpMethod.GET,
 				entity, String.class);
 		
 		
@@ -67,10 +67,10 @@ public class BookingController {
 		
 		// NOtify him
 		
-		sendEmail(booking.getUser_id(),paymentResponse.getBody());
+		//sendEmail(booking.getUser_id(),paymentResponse.getBody());
 		
 		
-		return booked;
+		return paymentResponse.getBody();
 		
 	}
 	

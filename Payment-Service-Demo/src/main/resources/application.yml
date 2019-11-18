@@ -1,13 +1,4 @@
 spring:
-  data:
-    cassandra:
-      keyspaceName: account
-      contactPoints: localhost
-      username: cassandra
-      password: cassandra
-      port: 9042
-      schemaAction: CREATE_IF_NOT_EXISTS
-
   kafka:
     consumer:
       bootstrap-servers: localhost:9092
