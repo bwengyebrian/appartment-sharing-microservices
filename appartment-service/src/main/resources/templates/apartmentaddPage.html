@@ -28,23 +28,82 @@
         <form action="saveapartment" method="post">
 
             <div class="form-group row">
-                <label for="inputapartmentNumber" class="col-sm-2 col-form-label">Apartment Number</label>
+                <label for="inputapartmenttitle" class="col-sm-2 col-form-label">Apartment Title</label>
                 <div class="col-sm-10">
-                    <input type="number" name="apartmentId" class="form-control" id="inputapartmentnumber" placeholder="Enter Apartment number">
+                    <input type="text" name="apartmentTitle" class="form-control" id="inputapartmenttitle" placeholder="Enter Apartment Title">
                 </div>
             </div>
+
+
+             <div class="form-group row">
+                   <label for="inputapartmentCategory" class="col-sm-2 col-form-label">Select category</label>
+                       <div class="col-sm-10">
+                         <select name="category" class="form-control" id="inputapartmentCategory" >
+                            <option selected="selected">-Select-</option>
+                             <option th:text="${category.categoryName}" th:value="${category.categoryId}" th:each="category:${categories}" ></option>
+                         </select>
+                        </div>
+              </div>
+
             <div class="form-group row">
-                <label for="inputapartmentTitle" class="col-sm-2 col-form-label">Apartment Title</label>
+                <label for="inputapartmentKewWord" class="col-sm-2 col-form-label">Key Word</label>
                 <div class="col-sm-10">
-                    <input type="text" name="apartmentTitle" class="form-control" id="inputapartmenttitle" placeholder="Apartment Title">
+                    <input type="text" name="apartmentKeyword" class="form-control" id="inputapartmentKewWord" placeholder="Apartment Keyword">
                 </div>
             </div>
+
+
             <div class="form-group row">
-                <label for="inputapartmentLocation" class="col-sm-2 col-form-label">Apartment Location</label>
+               <label for="inputapartmentLocationCity" class="col-sm-2 col-form-label">Apartment City</label>
+                   <div class="col-sm-10">
+                         <input type="text" name="apartmentLocationCity" class="form-control" id="inputapartmentLocationCity" placeholder="Apartment City">
+                  </div>
+            </div>
+
+
+            <div class="form-group row">
+                           <label for="inputapartmentLocationStreet" class="col-sm-2 col-form-label">Apartment Street</label>
+                               <div class="col-sm-10">
+                                     <input type="text" name="apartmentLocationStreet" class="form-control" id="inputapartmentLocationStreet" placeholder="Apartment Street">
+                              </div>
+                        </div>
+
+             <div class="form-group row">
+                                <label for="inputapartmentLocationState" class="col-sm-2 col-form-label">Select State</label>
+                                    <div class="col-sm-10">
+                                      <select name="apartmentLocationState" class="form-control" id="inputapartmentLocationState" >
+                                         <option selected="selected">-Select-</option>
+                                                        <option value="Iowa">IOWA</option>
+                                                        <option value="Texas">TEXAS</option>
+                                                        <option value="Nebraska">NEBRASKA</option>
+                                                        <option value="Missouri">MISSOURI</option>
+                                                        <option value="Tennessee">TENNESSEE</option>
+                                                        <option value="California">CALIFORNIA</option>
+                                      </select>
+                                     </div>
+                           </div>
+
+              <div class="form-group row">
+                            <label for="inputapartmentLocationZipCode" class="col-sm-2 col-form-label">Apartment Zip Code</label>
+                                <div class="col-sm-10">
+                                      <input type="number" name="apartmentLocationZipCode" class="form-control" id="inputapartmentLocationZipCode" placeholder="Apartment Zip">
+                               </div>
+                         </div>
+
+            <div class="form-group row">
+                <label for="inputapartmentImages" class="col-sm-2 col-form-label">Apartment Images</label>
                 <div class="col-sm-10">
-                    <input type="text" name="apartmentLocation" class="form-control" id="inputapartmentlocation" placeholder="Enter Location">
+                  <input id="inputapartmentImages" name="apartmentImages" type="file" accept="image/*" multiple />
                 </div>
             </div>
+
+
+            <div class="form-group row">
+                                        <label for="inputapartmentDescription" class="col-sm-2 col-form-label">Apartment Description</label>
+                                            <div class="col-sm-10">
+                                                  <input type="text" name="apartmentDescription" class="form-control" id="inputapartmentDescription" placeholder="Apartment Description">
+                                           </div>
+                                     </div>
 
 
             <div class="form-group row">
@@ -56,18 +115,34 @@
 
 
             <div class="form-group row">
+                            <label for="inputapartmentWebsite" class="col-sm-2 col-form-label">Website</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="apartmentWebsite" class="form-control" id="inputapartmentWebsite" placeholder="Enter URL">
+                            </div>
+                        </div>
+
+
+         <div class="form-group row">
+              <label for="inputapartmentEmail" class="col-sm-2 col-form-label">Email</label>
+                  <div class="col-sm-10">
+                        <input type="text" name="apartmentEmail" class="form-control" id="inputapartmentEmail" placeholder="Enter Email">
+                   </div>
+          </div>
+
+          <div class="form-group row">
+                        <label for="inputapartmentPriceDesc" class="col-sm-2 col-form-label">Price Description</label>
+                            <div class="col-sm-10">
+                                  <input type="text" name="apartmentCostDescription" class="form-control" id="inputapartmentPriceDesc" placeholder="Enter Description about price">
+                             </div>
+                    </div>
+
+            <div class="form-group row">
                 <label for="inputapartmentRate" class="col-sm-2 col-form-label">Rate</label>
                 <div class="col-sm-10">
                     <input type="number" step=".01" name="apartmentCost" class="form-control" id="inputapartmentrate" placeholder="Enter rate in $">
                 </div>
             </div>
 
-            <div class="form-group row">
-                <label for="inputapartmentImage" class="col-sm-2 col-form-label">Image</label>
-                <div class="col-sm-10">
-                    <input type="text" name="apartmentImage" class="form-control" id="inputapartmentimage" placeholder="I will do later">
-                </div>
-            </div>
 
     <!-- correct -->
     <div class="col-md-9 text-center">
