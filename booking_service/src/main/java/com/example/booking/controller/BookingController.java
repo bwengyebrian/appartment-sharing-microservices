@@ -38,8 +38,12 @@ public class BookingController {
 	@Autowired
 	private RestTemplate restTemplate;
 
-	@Autowired
 	private BookingService bookingService;
+
+	@Autowired
+	BookingController(BookingService bookingService){
+		this.bookingService=bookingService;
+	}
 
 	@PostMapping("/addbooking")
 	public Bookings add(@RequestBody Bookings booking, HttpServletRequest request) {
