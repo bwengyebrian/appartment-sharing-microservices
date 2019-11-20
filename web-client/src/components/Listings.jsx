@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import DashboardSidebar from './DashboardSidebar';
 class Listings extends Component {
-    state = {  }
     render() { 
+		console.log(this.props.cvb);
         return (  <div id="dashboard" >
             
         <a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>

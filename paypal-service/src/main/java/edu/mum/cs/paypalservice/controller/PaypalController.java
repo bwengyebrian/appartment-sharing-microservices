@@ -5,7 +5,6 @@ import edu.mum.cs.paypalservice.util.PayPalClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @RestController
@@ -24,7 +23,7 @@ public class PaypalController {
     }
 
     @PostMapping(value = "/makePayment")
-    public Map<String, Object> makePayment(@RequestBody Payment payment, HttpServletRequest request) {
+    public Map<String, Object> makePayment(@RequestBody Payment payment) {
         String price = payment.getPrice();
         String userId = payment.getUserId();
         return payPalClient.createPayment(userId, price);
