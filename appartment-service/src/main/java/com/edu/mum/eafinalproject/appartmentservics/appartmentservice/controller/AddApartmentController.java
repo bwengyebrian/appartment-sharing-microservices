@@ -33,6 +33,10 @@ public class AddApartmentController {
     @PostMapping(value = "/saveapartment")
     public String saveApartments(@ModelAttribute("apartments") Apartments apartments, ModelMap modelMap){
         Apartments apartmentsSaved =apartmentService.saveApartments(apartments);
+
+        // make a post request or subscribe to kafka and send the apartmentsSaved
+        //http:localhost:8093/elasticsearch/apartment/add
+
         String message = "Apartment saved with id" +apartmentsSaved.getApartmentId();
         modelMap.addAttribute("message", message);
         return "apartmentaddPage";
