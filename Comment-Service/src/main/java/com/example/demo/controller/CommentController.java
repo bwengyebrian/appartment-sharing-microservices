@@ -16,11 +16,12 @@ import com.example.demo.repository.CommentRepository;
 
 @RestController
 public class CommentController {
+	public static final String APPLICATION_JSON_UTF8_VALUE = "application/json;charset=UTF-8";
 	
 	@Autowired
 	CommentRepository commentRepository;
 	
-	@PostMapping(value= "/add", produces="application/json", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value= "/add", produces=APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Comments addUser(@RequestBody Comments comment) {
 	
     	return commentRepository.save(comment);
