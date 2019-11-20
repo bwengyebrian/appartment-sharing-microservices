@@ -71,7 +71,7 @@ class Header extends Component{
                             </div>
         
                             <a href="#sign-in-dialog" class="sign-in popup-with-zoom-anim"><i class="sl sl-icon-login"></i> Sign In</a>
-                            <NavLink to="/addlist" className="button border with-icon">Add Appartment </NavLink>
+                           {/* <NavLink to="/addlist" className="button border with-icon">Add Appartment </NavLink> */}
                         </div>
                     </div>
                     { /*  <!-- Right Side Content / End   -- > */ }
