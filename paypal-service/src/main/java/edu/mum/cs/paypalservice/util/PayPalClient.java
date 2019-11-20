@@ -22,14 +22,14 @@ public class PayPalClient {
     private static final String CANCEL_URL = "http://localhost:8082/cancelPayment";
 
 
-    public Map<String, Object> createPayment(String bookingId, String userId, String apartmentId, String price) {
+    public Map<String, Object> createPayment(String userId, String price) {
         Map<String, Object> response = new HashMap<String, Object>();
         Amount amount = new Amount();
         amount.setCurrency("USD");
         amount.setTotal(price);
         Transaction transaction = new Transaction();
         transaction.setAmount(amount);
-        transaction.setDescription("Test demo for paypal");
+        transaction.setDescription("Paypal payment for Apartment booking.");
         List<Transaction> transactions = new ArrayList<Transaction>();
         transactions.add(transaction);
 
@@ -40,17 +40,6 @@ public class PayPalClient {
         payment.setIntent("sale");
         payment.setPayer(payer);
         payment.setTransactions(transactions);
-
-        ItemList itemList = new ItemList();
-        List<Item> items = new ArrayList<>();
-
-        Item item = new Item();
-        item.setName("Radio");
-        item.setPrice("1");
-        item.setQuantity("1");
-        items.add(item);
-        itemList.setItems(items);
-
 
         RedirectUrls redirectUrls = new RedirectUrls();
         redirectUrls.setCancelUrl(CANCEL_URL);
@@ -93,6 +82,7 @@ public class PayPalClient {
             if(createdPayment!=null){
                 response.put("status", "success");
                 response.put("payment", createdPayment.getState());
+                response.put("paymentId", paymentId);
             }
         } catch (PayPalRESTException e) {
             System.err.println(e.getDetails());
