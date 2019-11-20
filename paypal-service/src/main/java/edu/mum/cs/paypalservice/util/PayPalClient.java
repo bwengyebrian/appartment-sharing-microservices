@@ -22,7 +22,7 @@ public class PayPalClient {
     private static final String CANCEL_URL = "http://localhost:8082/cancelPayment";
 
 
-    public Map<String, Object> createPayment(String bookingId, String userId, String apartmentId, String price) {
+    public Map<String, Object> createPayment( String userId, String price) {
         Map<String, Object> response = new HashMap<String, Object>();
         Amount amount = new Amount();
         amount.setCurrency("USD");

@@ -32,9 +32,9 @@ public class PaypalController {
     public Map<String, Object> makePayment(@RequestBody Booking booking) {
         String price = booking.getPrice();
         String userId = booking.getUserId();
-        String apartmentId = booking.getApartmentId();
-        String bookingId = booking.getBookingId();
-        return payPalClient.createPayment(bookingId, userId, apartmentId, price);
+//        String apartmentId = booking.getApartmentId();
+//        String bookingId = booking.getBookingId();
+        return payPalClient.createPayment( userId, price);
     }
 
     @PostMapping(value = "/completePayment")
