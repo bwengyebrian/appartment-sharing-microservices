@@ -1,4 +1,4 @@
-package edu.mum.cs.paymentservice.config;
+package edu.mum.cs.paypalservice.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -9,16 +9,16 @@ import java.util.HashMap;
 
 @Configuration
 @EnableConfigurationProperties
-@ConfigurationProperties("payment")
+@ConfigurationProperties("paypal")
 @RefreshScope
-public class PaymentConfig {
-    private HashMap<String, String> paymentMethods;
+public class PaypalConfig {
+    private HashMap<String, String> redirectUrls;
 
-    public HashMap<String, String> getPaymentMethods() {
-        return paymentMethods;
+    public HashMap<String, String> getRedirectUrls() {
+        return redirectUrls;
     }
 
-    public void setPaymentMethods(HashMap<String, String> paymentMethods) {
-        this.paymentMethods = paymentMethods;
+    public void setRedirectUrls(HashMap<String, String> redirectUrls) {
+        this.redirectUrls = redirectUrls;
     }
 }

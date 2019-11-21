@@ -3,15 +3,20 @@ package edu.mum.cs.paypalservice.util;
 import com.paypal.api.payments.*;
 import com.paypal.base.rest.APIContext;
 import com.paypal.base.rest.PayPalRESTException;
+import edu.mum.cs.paypalservice.config.PaypalConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
-import java.net.URI;
 import java.util.*;
 
 @Service
+@RefreshScope
 public class PayPalClient {
+    @Autowired
+    private PaypalConfig paypalConfig;
+
     @Value("${paypal.client.id}")
     private String clientId;
     @Value("${paypal.client.secret}")
@@ -42,8 +47,8 @@ public class PayPalClient {
         payment.setTransactions(transactions);
 
         RedirectUrls redirectUrls = new RedirectUrls();
-        redirectUrls.setCancelUrl(CANCEL_URL);
-        redirectUrls.setReturnUrl(SUCCESS_URL);
+        redirectUrls.setCancelUrl(paypalConfig.getRedirectUrls().get("cancel"));
+        redirectUrls.setReturnUrl(paypalConfig.getRedirectUrls().get("success"));
         payment.setRedirectUrls(redirectUrls);
         Payment createdPayment;
         try {
