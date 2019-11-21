@@ -2,13 +2,13 @@ package com.example.booking.model;
 
 import java.time.LocalDate;
 
-import org.springframework.data.cassandra.core.mapping.PrimaryKey;
-import org.springframework.data.cassandra.core.mapping.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Table(value = "bookings")
+@Document
 public class Bookings {
 
-	@PrimaryKey
+	@Id
 	private int id;
 	private String user_id;
 	private int apt_id;
