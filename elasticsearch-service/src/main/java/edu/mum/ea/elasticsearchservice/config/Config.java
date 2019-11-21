@@ -27,6 +27,12 @@ public class Config {
     @Value("${elasticsearch.cluster.name:elasticsearch}")
     private String clusterName;
 
+    @Value("${ELASTICSEARCH:#{null}}")
+    private String elasticSearchUrl;
+
+    @Value("${ELASTICSEARCH_PORT:#{null}}")
+    private String elasticSearchPort;
+
     @Bean
     public Client client() {
         TransportClient client = null;
@@ -36,7 +42,7 @@ public class Config {
               .put("path.home", elasticsearchHome)
               .put("cluster.name", clusterName).build();
             client = new PreBuiltTransportClient(elasticsearchSettings);
-            client.addTransportAddress(new TransportAddress(InetAddress.getByName("127.0.0.1"), 9300));
+            client.addTransportAddress(new TransportAddress(InetAddress.getByName(elasticSearchUrl), Integer.valueOf(elasticSearchPort)));
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }

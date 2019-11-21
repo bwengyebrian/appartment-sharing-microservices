@@ -40,9 +40,6 @@ class MostVisted extends Component {
   };
 
   componentDidMount() {
-
-    
-   
     axios({
       url: "http://localhost:8080/graphql",
       method: "post",
@@ -59,10 +56,10 @@ class MostVisted extends Component {
           }
             `
       }
-    }).then(result => {
-      this.setState({apartments: result.data.data.apartments});
-      console.log(result.data);
-    });
+    }).then(result => 
+      this.setState({apartments: result.data.data.apartments})
+    
+    );
   }
   render() {
     const { apartments} = this.state

@@ -1,28 +1,32 @@
 package edu.mum.ea.project.catalogservice.dto;
 
-import lombok.Data;
 
 public class Apartment {
-    Integer id;
+    Long id;
     String title;
     String details;
+    String location;
     String imageUrl;
+    Double cost;
 
     public Apartment() {
     }
 
-    public Apartment(Integer id, String title, String details, String imageUrl) {
+
+    public Apartment(Long id, String title, String details, String location, String imageUrl, Double cost) {
         this.id = id;
         this.title = title;
         this.details = details;
+        this.location = location;
         this.imageUrl = imageUrl;
+        this.cost = cost;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -42,6 +46,14 @@ public class Apartment {
         this.details = details;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public String getImageUrl() {
         return imageUrl;
     }
@@ -50,13 +62,23 @@ public class Apartment {
         this.imageUrl = imageUrl;
     }
 
+    public Double getCost() {
+        return cost;
+    }
+
+    public void setCost(Double cost) {
+        this.cost = cost;
+    }
+
     @Override
     public String toString() {
         return "Apartment{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", details='" + details + '\'' +
+                ", location='" + location + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
+                ", cost=" + cost +
                 '}';
     }
 }
