@@ -13,6 +13,7 @@ import com.example.booking.repository.BookingRepository;
 
 @Service
 public class BookingService {
+
     @Autowired
    BookingRepository bookingRepository;
 
