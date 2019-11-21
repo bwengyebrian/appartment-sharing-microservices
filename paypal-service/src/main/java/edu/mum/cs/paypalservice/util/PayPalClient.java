@@ -3,15 +3,20 @@ package edu.mum.cs.paypalservice.util;
 import com.paypal.api.payments.*;
 import com.paypal.base.rest.APIContext;
 import com.paypal.base.rest.PayPalRESTException;
+import edu.mum.cs.paypalservice.config.PaypalConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
-import java.net.URI;
 import java.util.*;
 
 @Service
+@RefreshScope
 public class PayPalClient {
+    @Autowired
+    private PaypalConfig paypalConfig;
+
     @Value("${paypal.client.id}")
     private String clientId;
     @Value("${paypal.client.secret}")
@@ -22,14 +27,14 @@ public class PayPalClient {
     private static final String CANCEL_URL = "http://localhost:8082/cancelPayment";
 
 
-    public Map<String, Object> createPayment( String userId, String price) {
+    public Map<String, Object> createPayment(String userId, String price) {
         Map<String, Object> response = new HashMap<String, Object>();
         Amount amount = new Amount();
         amount.setCurrency("USD");
         amount.setTotal(price);
         Transaction transaction = new Transaction();
         transaction.setAmount(amount);
-        transaction.setDescription("Test demo for paypal");
+        transaction.setDescription("Paypal payment for Apartment booking.");
         List<Transaction> transactions = new ArrayList<Transaction>();
         transactions.add(transaction);
 
@@ -41,20 +46,9 @@ public class PayPalClient {
         payment.setPayer(payer);
         payment.setTransactions(transactions);
 
-        ItemList itemList = new ItemList();
-        List<Item> items = new ArrayList<>();
-
-        Item item = new Item();
-        item.setName("Radio");
-        item.setPrice("1");
-        item.setQuantity("1");
-        items.add(item);
-        itemList.setItems(items);
-
-
         RedirectUrls redirectUrls = new RedirectUrls();
-        redirectUrls.setCancelUrl(CANCEL_URL);
-        redirectUrls.setReturnUrl(SUCCESS_URL);
+        redirectUrls.setCancelUrl(paypalConfig.getRedirectUrls().get("cancel"));
+        redirectUrls.setReturnUrl(paypalConfig.getRedirectUrls().get("success"));
         payment.setRedirectUrls(redirectUrls);
         Payment createdPayment;
         try {
@@ -93,6 +87,7 @@ public class PayPalClient {
             if(createdPayment!=null){
                 response.put("status", "success");
                 response.put("payment", createdPayment.getState());
+                response.put("paymentId", paymentId);
             }
         } catch (PayPalRESTException e) {
             System.err.println(e.getDetails());

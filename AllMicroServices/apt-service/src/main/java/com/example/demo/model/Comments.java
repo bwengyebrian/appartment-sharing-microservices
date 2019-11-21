@@ -14,25 +14,25 @@ public class Comments {
    
     private List<Replies> replies=new ArrayList<Replies>();
     
-    
-    public void addReply(Replies reply) {
-    	replies.add(reply);
-    }
-
+  
 
 	public Comments() {
 		super();
 	}
 
 
-	public Comments(Integer id, Integer apartmentId, String emailId, String comment, int stars) {
+	public Comments(Integer id, Integer apartmentId, String emailId, String comment, int stars, List<Replies> replies) {
 		super();
 		this.id = id;
-		this.apartmentId=apartmentId;
+		this.apartmentId = apartmentId;
 		this.emailId = emailId;
 		this.comment = comment;
 		this.stars = stars;
+		this.replies = replies;
 	}
+
+
+	
 
 
 	public Integer getApartmentId() {

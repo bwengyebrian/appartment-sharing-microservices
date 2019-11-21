@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.example.demo.kafka.Producer;
 import com.example.demo.model.ApartmentWithComment;
 import com.example.demo.model.Apartments;
 import com.example.demo.model.Bookings;
@@ -45,15 +46,20 @@ public class AptController {
 
     @Autowired
     ApartmentRepository apartmentService;
+    @Autowired
+    Producer producer;
 
     
     @PostMapping(value = "/saveapartment" , produces="application/json")
     public Apartments saveApartments(@RequestBody Apartments apartment){
+    	
+    	
+    	
 
     	Apartments apt= 
         apartmentService.save(apartment);
     	
-    	
+    	this.producer.sendMessage(apt);
     	
     	return apt;
       
@@ -79,9 +85,13 @@ public class AptController {
     //	System.out.println(response.getBody());
     	
     	Type collectionType = new TypeToken<List<Comments>>(){}.getType();
-    	@SuppressWarnings("unchecked")
-		List<Comments> lcs = (List<Comments>) new Gson()
+    	
+		@SuppressWarnings("unchecked")
+		List<Comments> lcs = (List<Comments>) gson
     	               .fromJson( response.getBody() , collectionType);
+    	
+    //	System.out.println(lcs.get(0).getReplies().get(0).getComment());
+    	
     	
     	apt.setComments(lcs);
     	
