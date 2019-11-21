@@ -1,0 +1,5 @@
+edu/mum/ea/project/catalogservice/GraphQLDataFetchers.class
+edu/mum/ea/project/catalogservice/GraphQLProvider.class
+edu/mum/ea/project/catalogservice/dto/Apartment.class
+edu/mum/ea/project/catalogservice/CatalogServiceApplication.class
+edu/mum/ea/project/catalogservice/feign/ApartmentServiceFeign.class

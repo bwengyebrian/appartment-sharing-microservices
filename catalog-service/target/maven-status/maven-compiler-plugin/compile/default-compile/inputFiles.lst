@@ -1,0 +1,5 @@
+/home/brian/Desktop/MUM/projects/appartment-sharing-microservices/catalog-service/src/main/java/edu/mum/ea/project/catalogservice/dto/Apartment.java
+/home/brian/Desktop/MUM/projects/appartment-sharing-microservices/catalog-service/src/main/java/edu/mum/ea/project/catalogservice/GraphQLProvider.java
+/home/brian/Desktop/MUM/projects/appartment-sharing-microservices/catalog-service/src/main/java/edu/mum/ea/project/catalogservice/feign/ApartmentServiceFeign.java
+/home/brian/Desktop/MUM/projects/appartment-sharing-microservices/catalog-service/src/main/java/edu/mum/ea/project/catalogservice/GraphQLDataFetchers.java
+/home/brian/Desktop/MUM/projects/appartment-sharing-microservices/catalog-service/src/main/java/edu/mum/ea/project/catalogservice/CatalogServiceApplication.java
